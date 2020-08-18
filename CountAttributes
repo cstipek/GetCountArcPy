@@ -1,0 +1,18 @@
+#Load the correct library
+import arcpy
+
+#I always set the overwrite output to true in case I run the script a few times but this next line is totally preference
+arcpy.env.overwriteOutput = True
+
+#Set the working directory to wherever you have housed your geodatabase
+setwd = (r'C:\Users\stipecl\...Geodatabase.gdb')
+
+#There are two different ways to approach this
+#1 - can read the shapefile wherever it is housed externally, example below
+wa_cities = (r'C:\Users\stipecl\Desktop\Data\City\WA_Cities\tl_2014_53_place.shp')
+#2 - can read the data that is housed within the geodatabase if you want to but I will proceed with option 1
+#fc = arcpy.GetParameterasText(0)
+
+#I want to print the number of cities in the wa_cities shpfile
+numFeats = arcpy.GetCount_management(wa_cities)
+print("""{0} has {1} feature's""".format(wa_cities, numFeats))
